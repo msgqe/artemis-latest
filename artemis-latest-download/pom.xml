@@ -10,14 +10,6 @@
     <packaging>pom</packaging>
     <name>RedHat :: Middleware Messaging QE :: Artemis Latest</name>
 
-
-    <repositories>
-        <repository>
-            <id>Apache</id>
-            <url>https://repository.apache.org/content/groups/snapshots/org/apache/activemq/apache-artemis/</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.activemq</groupId>
