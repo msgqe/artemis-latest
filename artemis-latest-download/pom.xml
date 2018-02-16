@@ -5,28 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.redhat</groupId>
-    <artifactId>artemis-latest</artifactId>
+    <artifactId>artemis-latest-download</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>RedHat :: Middleware Messaging QE :: Artemis Latest</name>
 
-    <!--<repositories>-->
-        <!--<repository>-->
-            <!--<id>Apache Mirror</id>-->
-            <!--<name>Apache Mirror</name>-->
-            <!--<url>http://messaging-qe-repo.usersys.redhat.com:8081/artifactory/apache-artemis-mirror/</url>-->
-            <!--<snapshots>-->
-                <!--<enabled>true</enabled>-->
-                <!--<updatePolicy>never</updatePolicy>-->
-                <!--<checksumPolicy>fail</checksumPolicy>-->
-            <!--</snapshots>-->
-        <!--</repository>-->
-    <!--</repositories>-->
-
     <dependencies>
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>apache-artemis</artifactId>
+            <artifactId>apache-artemis-download</artifactId>
             <version>2.5.0-SNAPSHOT</version>
             <type>tar.gz</type>
             <classifier>bin</classifier>
@@ -40,91 +27,30 @@
         </dependency>
     </dependencies>
 
+
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-antrun-plugin</artifactId>
-                    <version>1.8</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-dependency-plugin</artifactId>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>unpack</id>-->
-                        <!--<phase>generate-resources</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>unpack</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<artifactItems>-->
-                                <!--<artifactItem>-->
-                                    <!--<groupId>org.apache.activemq</groupId>-->
-                                    <!--<artifactId>apache-artemis</artifactId>-->
-                                    <!--<version>LATEST</version>-->
-                                    <!--<type>tar.gz</type>-->
-                                    <!--<classifier>bin</classifier>-->
-                                    <!--<outputDirectory>${destdir}</outputDirectory>-->
-                                <!--</artifactItem>-->
-                            <!--</artifactItems>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-antrun-plugin</artifactId>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>create-link</id>-->
-                        <!--<phase>generate-resources</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>run</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<target name="Creating links">-->
-                                <!--<echo>Creating the symlink</echo>-->
-                                <!--<exec executable="/bin/sh">-->
-                                    <!--<arg value="-c" />-->
-                                    <!--<arg value="find ${destdir} -maxdepth 1 -name apache* -type d -ctime -1 -exec ln -s {} ${destdir}/apache-artemis \;" />-->
-                                <!--</exec>-->
-                                <!--&ndash;&gt;-->
-                            <!--</target>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-
-        <!--</plugins>-->
-
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.0.2</version>
-                    <executions>
-                        <execution>
-                            <id>copy-dependencies</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>copy-dependencies</goal>
-                            </goals>
-                            <configuration>
-                                <outputDirectory>${project.build.directory}/</outputDirectory>
-                                <overWriteReleases>false</overWriteReleases>
-                                <overWriteSnapshots>false</overWriteSnapshots>
-                                <overWriteIfNewer>true</overWriteIfNewer>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-
-
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
+
 </project>
