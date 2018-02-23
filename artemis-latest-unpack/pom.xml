@@ -15,7 +15,7 @@
             <groupId>org.apache.activemq</groupId>
             <artifactId>apache-artemis</artifactId>
             <version>2.5.0-SNAPSHOT</version>
-            <type>tar.gz</type>
+            <type>zip</type>
             <classifier>bin</classifier>
             <scope>compile</scope>
             <exclusions>
@@ -54,7 +54,7 @@
                                     <groupId>org.apache.activemq</groupId>
                                     <artifactId>apache-artemis</artifactId>
                                     <version>LATEST</version>
-                                    <type>tar.gz</type>
+                                    <type>zip</type>
                                     <classifier>bin</classifier>
                                     <outputDirectory>${destdir}</outputDirectory>
                                 </artifactItem>
